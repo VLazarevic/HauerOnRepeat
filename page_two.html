@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title >Zwölftonmusik</title>
+
+        <link rel="stylesheet" href="css/page_two.css">
+
+        <!-- font -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400&display=swap" rel="stylesheet">
+
+        <!-- bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <!-- videoplayer -->
+        <link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
+    </head>
+
+    <body>
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top">
+            <div class="container">
+            <h1 id="title" class="col-md-10 text-dark">Zwölftonmusik</h1>
+
+            <select class="col-md-2" name="language" id="language" onchange="reloadSite()">
+                <option value="german">Deutsch</option>
+                <option value="english">English</option>
+            </select>
+            </div>
+        </nav>
+        
+        <br><br>
+        <!-- Page Content -->
+        <div class=" container py-5 pt-5 my-5">
+
+            <div class="row">
+                <img class="mx-auto d-block" id="noten" src="images/noten.png" alt="">
+            </div>
+            <br>
+            <div class="row">
+                <blockquote class="twitter-tweet text-center">
+                    <p lang="und" dir="ltr">
+                        <a href="https://t.co/9RRrIS2HfB">pic.twitter.com/9RRrIS2HfB</a>
+                    </p> &mdash; 
+                    Hauer On Repeat (@HauerOnRepeat) 
+                    <a href="https://twitter.com/HauerOnRepeat/status/1237728325797400576?ref_src=twsrc%5Etfw">March 11, 2020</a>
+                </blockquote>                 
+            </div>
+            
+            
+        </div>
+
+        <section class="row" id="navBar">
+            <div class="col-md-1" id="containerHelp">
+                <button class="btn btn-dark" id="buttonHelp" onclick="showHelp()">?</button>
+            </div>
+
+            <div class="col-md-10"></div>
+
+            <div class="col-md-1" id="containerPrevNext">
+                <div id="containerPrev">
+                    <button class="btn btn-dark" id="buttonPrev"><</button>
+                </div>
+                
+                <div id="containerNext">
+                    <button class="btn btn-dark" id="buttonNext">></button>
+                </div>
+            </div>
+        </div>
+
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <script src="https://vjs.zencdn.net/7.10.2/video.min.js"></script>
+
+        <script>
+            var multilanguage = {
+                german: {
+                    title: "Zwölftonmusik"
+                },
+                english: {
+                    title: "Twelve-tone music"
+                }
+            };
+
+            function reloadSite(){
+                let tmp = document.getElementById("language");
+                console.log(tmp.value);
+
+                if(tmp.value === "english"){
+                    document.title = "Twelve-tone music";
+                    document.getElementById("title").innerHTML = multilanguage.english.title;
+                }else{
+                    document.title = "Zwölftonmusik";
+                    document.getElementById("title").innerHTML = multilanguage.german.title;
+                }
+            }
+
+            let tweet = document.getElementsByClassName("twitter-tweet twitter-tweet-rendered");
+
+            if(tweet[0] != undefined && tweet[0] != null) {
+                console.log("centering...");
+                tweet[0].classList.add("container");
+            } else {
+                setTimeout(function () {
+                    let tweet = document.getElementsByClassName("twitter-tweet twitter-tweet-rendered");
+
+
+                    console.log("centering...");
+                    console.log(tweet);
+                    if(tweet[0] != undefined) {
+                        tweet[0].classList.add("container");
+                    }
+                }, 200);
+            }
+
+
+            $(document).ready(function(){            
+                if(localStorage.getItem("firstLoad") == null) {
+                    localStorage.setItem("firstLoad", false);
+                    showHelp();
+                }
+            });
+
+            function showHelp() {
+            let msg;
+            msg = "Zum Ändern der Sprache rechts oben klicken.\r\n\r\n" +
+                  "Die Seite kann mittels den Pfeiltasten rechts unten geändert werden.\r\n\r\n" +
+                  "Für weitere Informationen zur aktuellen Seite nach unten scrollen.\r\n\r\n" +
+                  "Die Videoplayer (Seite 2-4) können über die darunterliegende Bedienleiste gesteuert werden.";
+            alert(msg);
+        }
+
+        </script>
+
+    </body>
+
+
+</html>

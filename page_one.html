@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Zwölftonmusik</title>
+
+        <link rel="stylesheet" href="css/main.css">
+
+        <!-- font -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400&display=swap" rel="stylesheet">
+
+        <!-- bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+        <header class="container-fluid">
+            <h1 id="title" class="col-md-10">Zwölftonmusik</h1>
+
+            <select class="col-md-1" name="language" id="language" onchange="reloadSite()">
+                <option value="german">Deutsch</option>
+                <option value="english">English</option>
+            </select>
+        
+        </header>
+
+        <form class="container w-50">
+            <div class="form-group" id="containerInput">
+                <input type="number" class="form-control" id="numberInput">
+            </div>
+        </form>
+
+        <section class="container" id="containerTorus">
+            <div class="row" id="canvasParent">
+                <canvas id="canvasTorus" height="1000">OOPS.. Upgrade your Browser</canvas>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <button class="btn btn-light" id="buttonReset">Zurücksetzen</button>
+                </div>
+
+                <div class="col-md-6">
+                    <button class="btn btn-dark" id="buttonConfirm">Bestätigen</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="row" id="navBar">
+            <div class="col-md-1" id="containerHelp">
+                    <button class="btn btn-dark" id="buttonHelp" onclick="showHelp()">?</button>
+            </div>
+
+            <div class="col-md-10"></div>
+
+            <div class="col-md-1" id="containerPrevNext">
+                <div id="containerPrev">
+                    <button class="btn btn-dark" id="buttonPrev"><</button>
+                </div>
+                
+                <div id="containerNext">
+                    <button class="btn btn-dark" id="buttonNext">></button>
+                </div>
+            </div>
+        </div>
+        
+        <section class="container" id="info">
+            <br><br>
+            <h1>Header</h1>
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+        </section>
+    </body>
+
+    <script>
+        var multilanguage = {
+                german: {
+                    title: "Zwölftonmusik"
+                },
+                english: {
+                    title: "Twelve-tone music"
+                }
+            };
+
+        function reloadSite(){
+            let tmp = document.getElementById("language");
+
+            if(tmp.value === "english"){
+                document.title = "Twelve-tone music";
+                document.getElementById("title").innerHTML = multilanguage.english.title;
+            }else{
+                document.title = "Zwölftonmusik";
+                document.getElementById("title").innerHTML = multilanguage.german.title;
+            }
+        }
+
+        let points = [];
+
+        $(document).ready(function(){
+            let canvas = $("#canvasTorus")[0];
+            canvas.width = $("#canvasParent").width();
+            let context = canvas.getContext("2d");
+            polygon(context, $("#canvasParent").width() / 2, canvas.height / 2, 300, 12);
+            context.stroke();
+            
+            if(localStorage.getItem("firstLoad") == null) {
+                localStorage.setItem("firstLoad", false);
+                showHelp();
+            }
+        })
+
+        function polygon(ctx, x, y, radius, sides) {
+            if (sides < 3) return;
+            let a = ((Math.PI * 2)/sides);
+            ctx.beginPath();
+            ctx.translate(x,y);
+            ctx.moveTo(radius,0);
+            
+            let temp = [radius, 0];
+            points[0] = temp;
+
+            for (let i = 1; i < sides; i++) {
+                ctx.lineTo(radius*Math.cos(a*i),radius*Math.sin(a*i));
+                temp = [radius*Math.cos(a*i), radius*Math.sin(a*i)];
+                points[i] = temp;
+            }
+            ctx.closePath();
+            
+            for(let i = 0; i < points.length; i++) {
+                ctx.moveTo(points[i][0], points[i][1]);
+                for(let j = 0; j < points.length; j++) {
+                    ctx.lineTo(points[j][0], points[j][1]);
+                    ctx.closePath();
+                }
+            }
+        }
+
+        function showHelp() {
+            let msg;
+            msg = "Zum Ändern der Sprache rechts oben klicken.\r\n\r\n" +
+                  "Die Seite kann mittels den Pfeiltasten rechts unten geändert werden.\r\n\r\n" +
+                  "Für weitere Informationen zur aktuellen Seite nach unten scrollen.\r\n\r\n" +
+                  "Die Videoplayer (Seite 2-4) können über die darunterliegende Bedienleiste gesteuert werden.";
+            alert(msg);
+        }
+
+    </script>
+</html>

@@ -1,0 +1,62 @@
+div, h1, select, option {
+    font-family: 'Source Code Pro', monospace;
+}
+
+
+#language {
+    float: right;
+    padding: 0.4em;
+    margin-right: 1em;
+}
+
+header select, #containerTorus button, #navBar button {
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+#containerTorus button {
+    width: 50%;
+}
+
+#containerTorus .row {
+    text-align: center;
+}
+
+#containerTorus canvas {
+    float: center;
+}
+
+#navBar {
+    margin: 2em; 
+}
+
+#navBar button {
+    width: 3em;
+}
+
+#containerHelp {
+    padding: 0;
+    text-align: left;
+}
+
+#containerPrevNext {
+    padding: 0;
+    text-align: right;
+}
+
+#containerPrev, #containerNext {
+    width: 40%;
+    display: inline-block;
+}
+
+#index-Text {
+    padding-right: 2rem !important;
+}
+
+.masthead {
+    height: 100vh;
+    background-image: url('https://images.pexels.com/photos/164821/pexels-photo-164821.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
