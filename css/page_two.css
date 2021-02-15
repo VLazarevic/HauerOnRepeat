@@ -47,7 +47,6 @@ header select, #containerTorus button, #navBar button {
 #containerPrev, #containerNext {
     width: 40%;
     display: inline-block;
-    margin-right: 10px;
 }
 
 #index-Text {
