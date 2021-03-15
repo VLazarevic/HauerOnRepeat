@@ -21,9 +21,15 @@
         <header class="container-fluid">
             <h1 id="title" class="col-md-10">Zwölftonmusik</h1>
 
+<<<<<<< HEAD
             <select class="col-md-1" name="language" id="language" onchange="reloadSite()">
                 <option value="german" id="german">Deutsch</option>
                 <option value="english" id="english">English</option>
+=======
+            <select class="col-md-2" name="language" id="language" onchange="reloadSite()">
+                <option value="german" data-reload  >Deutsch</option>
+                <option value="english" data-reload >English</option>
+>>>>>>> 844ffd2bcd4965cc651afa9b35652f1282939786
             </select>
         
         </header>
@@ -77,6 +83,7 @@
     </body>
 
     <script>
+<<<<<<< HEAD
 
             $(document).ready(function() {
                 let tmp = localStorage.getItem("language");
@@ -92,6 +99,22 @@
                 
             });
 
+=======
+        function resize(){    
+            $("#canvas").outerHeight($(window)
+                .height()-$("#canvas")
+                    .offset().top- Math.abs($("#canvas")
+                        .outerHeight(true) - $("#canvas").outerHeight()));
+        }
+        
+        $(document).ready(function(){
+            resize();
+            $(window).on("resize", function(){                      
+                resize();
+            });
+        });
+        
+>>>>>>> 844ffd2bcd4965cc651afa9b35652f1282939786
         $('#buttonPrev').click(function() {
         window.location='index.html';
         });
@@ -115,9 +138,13 @@
             if(tmp.value === "english"){
                 document.title = "Twelve-tone music";
                 document.getElementById("title").innerHTML = multilanguage.english.title;
+                document.getElementById("buttonReset").textContent = "Reset";
+                document.getElementById("buttonConfirm").textContent = "Confirm";
             }else{
                 document.title = "Zwölftonmusik";
                 document.getElementById("title").innerHTML = multilanguage.german.title;
+                document.getElementById("buttonReset").textContent = "Zurücksetzen";
+                document.getElementById("buttonConfirm").textContent = "Bestätigen";
             }
         }
 

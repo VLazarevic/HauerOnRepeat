@@ -24,6 +24,7 @@ header select, #containerTorus button, #navBar button {
 
 #containerTorus canvas {
     float: center;
+    width: 100%;
 }
 
 #navBar {
