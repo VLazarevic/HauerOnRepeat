@@ -21,15 +21,9 @@
         <header class="container-fluid">
             <h1 id="title" class="col-md-10">Zwölftonmusik</h1>
 
-<<<<<<< HEAD
             <select class="col-md-1" name="language" id="language" onchange="reloadSite()">
                 <option value="german" id="german">Deutsch</option>
                 <option value="english" id="english">English</option>
-=======
-            <select class="col-md-2" name="language" id="language" onchange="reloadSite()">
-                <option value="german" data-reload  >Deutsch</option>
-                <option value="english" data-reload >English</option>
->>>>>>> 844ffd2bcd4965cc651afa9b35652f1282939786
             </select>
         
         </header>
@@ -76,81 +70,29 @@
         
         <section class="container" id="info">
             <br><br>
-            <h1>Header</h1>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+            <h1 id="info_title">Allgemeine Information über Zwölftonmusik</h1>
+            <p id="info_content">Bei der Zwölftonmusik werden alle 12 Töne der Tonleiter verwendet, also im Prinzip alle weißen und schwarzen Tasten, die man auf dem Klavier innerhalb einer Oktave findet. Die einzelnen Töne der Reihe dürfen erst wiederholt werden, wenn alle einmal gespielt wurden. </p>
         </section>
     </body>
 
     <script>
-<<<<<<< HEAD
 
-            $(document).ready(function() {
-                let tmp = localStorage.getItem("language");
-                let drop = document.getElementById("language");
 
-                if(tmp == "german") {
-                    document.querySelector('#german').selected = true;
-                } else {
-                    document.querySelector('#english').selected = true;
-                }
-
-                reloadSite();
-                
-            });
-
-=======
         function resize(){    
-            $("#canvas").outerHeight($(window)
-                .height()-$("#canvas")
-                    .offset().top- Math.abs($("#canvas")
-                        .outerHeight(true) - $("#canvas").outerHeight()));
+            $("#canvasTorus").outerHeight($(window)
+                .height()-$("#canvasTorus")
+                    .offset().top- Math.abs($("#canvasTorus")
+                        .outerHeight(true) - $("#canvasTorus").outerHeight()));
         }
+
+        $(window).on("resize", function(){                      
+                resize();
+            });
         
         $(document).ready(function(){
             resize();
-            $(window).on("resize", function(){                      
-                resize();
-            });
-        });
-        
->>>>>>> 844ffd2bcd4965cc651afa9b35652f1282939786
-        $('#buttonPrev').click(function() {
-        window.location='index.html';
-        });
+            
 
-        $('#buttonNext').click(function() {
-        window.location='page_two.html';
-        });
-
-        var multilanguage = {
-                german: {
-                    title: "Zwölftonmusik"
-                },
-                english: {
-                    title: "Twelve-tone music"
-                }
-            };
-
-        function reloadSite(){
-            let tmp = document.getElementById("language");
-
-            if(tmp.value === "english"){
-                document.title = "Twelve-tone music";
-                document.getElementById("title").innerHTML = multilanguage.english.title;
-                document.getElementById("buttonReset").textContent = "Reset";
-                document.getElementById("buttonConfirm").textContent = "Confirm";
-            }else{
-                document.title = "Zwölftonmusik";
-                document.getElementById("title").innerHTML = multilanguage.german.title;
-                document.getElementById("buttonReset").textContent = "Zurücksetzen";
-                document.getElementById("buttonConfirm").textContent = "Bestätigen";
-            }
-        }
-
-        let points = [];
-
-        $(document).ready(function(){
             let canvas = $("#canvasTorus")[0];
             canvas.width = $("#canvasParent").width();
             let context = canvas.getContext("2d");
@@ -161,7 +103,66 @@
                 localStorage.setItem("firstLoad", false);
                 showHelp();
             }
-        })
+
+            let tmp = localStorage.getItem("language");
+                let drop = document.getElementById("language");
+
+                if(tmp == "german") {
+                    document.querySelector('#german').selected = true;
+                } else {
+                    document.querySelector('#english').selected = true;
+                }
+
+                reloadSite();
+        });
+        
+        $('#buttonPrev').click(function() {
+        window.location='index.html';
+        });
+
+        $('#buttonNext').click(function() {
+        window.location='page_two.html';
+        });
+
+        var multilanguage = {
+                german: {
+                    title: "Zwölftonmusik",
+                    info_title: "Allgemeine Information über Zwölftonmusik",
+                    info: "Bei der Zwölftonmusik werden alle 12 Töne der Tonleiter verwendet, also im Prinzip alle weißen und schwarzen Tasten, die man auf dem Klavier innerhalb einer Oktave findet. Die einzelnen Töne der Reihe dürfen erst wiederholt werden, wenn alle einmal gespielt wurden. "
+                },
+                english: {
+                    title: "Twelve-tone music",
+                    info_title: "General information about twelve-tone music",
+                    info: "In twelve-tone music, all 12 tones of the scale are used, i.e. in principle all white and black keys that are found on the piano within an octave. The individual notes in the series may only be repeated once they have all been played once."
+                }
+            };
+
+        function reloadSite(){
+            let tmp = document.getElementById("language");
+
+            if(tmp.value === "english"){
+                document.title = "Twelve-tone music";
+                console.log(document.getElementById("info"));
+                document.getElementById("title").innerHTML = multilanguage.english.title;
+                document.getElementById("info_title").innerHTML = multilanguage.english.info_title;
+                document.getElementById("info_content").innerHTML = multilanguage.english.info;
+                document.getElementById("buttonReset").textContent = "Reset";
+                document.getElementById("buttonConfirm").textContent = "Confirm";
+                localStorage.setItem("language", "english");
+            }else{
+                document.title = "Zwölftonmusik";
+                document.getElementById("title").innerHTML = multilanguage.german.title;
+                document.getElementById("info_title").innerHTML = multilanguage.german.info_title;
+                document.getElementById("info_content").innerHTML = multilanguage.german.info;
+                document.getElementById("buttonReset").textContent = "Zurücksetzen";
+                document.getElementById("buttonConfirm").textContent = "Bestätigen";
+                localStorage.setItem("language", "german");
+            }
+        }
+
+        let points = [];
+
+        
 
         function polygon(ctx, x, y, radius, sides) {
             if (sides < 3) return;
@@ -198,20 +199,7 @@
             alert(msg);
         }
 
-        function reloadSite(){
-                let tmp = document.getElementById("language");
-                console.log(tmp.value);
-
-                if(tmp.value === "english"){
-                    document.title = "Twelve-tone music";
-                    document.getElementById("title").innerHTML = multilanguage.english.title;
-                    localStorage.setItem("language", "english");
-                }else{
-                    document.title = "Zwölftonmusik";
-                    document.getElementById("title").innerHTML = multilanguage.german.title;
-                    localStorage.setItem("language", "german");
-                }
-        }
+        
 
     </script>
 </html>
