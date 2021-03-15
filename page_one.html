@@ -21,9 +21,9 @@
         <header class="container-fluid">
             <h1 id="title" class="col-md-10">Zwölftonmusik</h1>
 
-            <select class="col-md-1" name="language" id="language" onchange="reloadSite()">
-                <option value="german">Deutsch</option>
-                <option value="english">English</option>
+            <select class="col-md-2" name="language" id="language" onchange="reloadSite()">
+                <option value="german" data-reload  >Deutsch</option>
+                <option value="english" data-reload >English</option>
             </select>
         
         </header>
@@ -101,9 +101,13 @@
             if(tmp.value === "english"){
                 document.title = "Twelve-tone music";
                 document.getElementById("title").innerHTML = multilanguage.english.title;
+                document.getElementById("buttonReset").textContent = "Reset";
+                document.getElementById("buttonConfirm").textContent = "Confirm";
             }else{
                 document.title = "Zwölftonmusik";
                 document.getElementById("title").innerHTML = multilanguage.german.title;
+                document.getElementById("buttonReset").textContent = "Zurücksetzen";
+                document.getElementById("buttonConfirm").textContent = "Bestätigen";
             }
         }
 
