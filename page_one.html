@@ -22,8 +22,8 @@
             <h1 id="title" class="col-md-10">Zwölftonmusik</h1>
 
             <select class="col-md-1" name="language" id="language" onchange="reloadSite()">
-                <option value="german">Deutsch</option>
-                <option value="english">English</option>
+                <option value="german" id="german">Deutsch</option>
+                <option value="english" id="english">English</option>
             </select>
         
         </header>
@@ -77,6 +77,20 @@
     </body>
 
     <script>
+
+            $(document).ready(function() {
+                let tmp = localStorage.getItem("language");
+                let drop = document.getElementById("language");
+
+                if(tmp == "german") {
+                    document.querySelector('#german').selected = true;
+                } else {
+                    document.querySelector('#english').selected = true;
+                }
+
+                reloadSite();
+                
+            });
 
         $('#buttonPrev').click(function() {
         window.location='index.html';
@@ -155,6 +169,21 @@
                   "Für weitere Informationen zur aktuellen Seite nach unten scrollen.\r\n\r\n" +
                   "Die Videoplayer (Seite 2-4) können über die darunterliegende Bedienleiste gesteuert werden.";
             alert(msg);
+        }
+
+        function reloadSite(){
+                let tmp = document.getElementById("language");
+                console.log(tmp.value);
+
+                if(tmp.value === "english"){
+                    document.title = "Twelve-tone music";
+                    document.getElementById("title").innerHTML = multilanguage.english.title;
+                    localStorage.setItem("language", "english");
+                }else{
+                    document.title = "Zwölftonmusik";
+                    document.getElementById("title").innerHTML = multilanguage.german.title;
+                    localStorage.setItem("language", "german");
+                }
         }
 
     </script>

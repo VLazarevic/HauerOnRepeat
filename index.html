@@ -25,8 +25,8 @@
             <h1 id="title" class="col-md-10 text-white">Zwölftonmusik</h1>
 
             <select class="col-md-2" name="language" id="language" onchange="reloadSite()">
-                <option value="german" data-reload  >Deutsch</option>
-                <option value="english" data-reload >English</option>
+                <option value="german" id="german" data-reload  >Deutsch</option>
+                <option value="english" id="english" data-reload >English</option>
             </select>
             </div>
         </nav>
@@ -87,8 +87,22 @@
         </div>
         <script>
 
+            $(document).ready(function() {
+                let tmp = localStorage.getItem("language");
+                let drop = document.getElementById("language");
+
+                if(tmp == "german") {
+                    document.querySelector('#german').selected = true;
+                } else {
+                    document.querySelector('#english').selected = true;
+                }
+
+                reloadSite();
+                
+            });
+
             $('#buttonNext').click(function() {
-            window.location='page_one.html';
+                window.location='page_one.html';
             });
 
             var multilanguage = {
@@ -114,14 +128,17 @@
                     document.getElementById("title2").innerHTML = multilanguage.english.title;
                     info1.textContent = multilanguage.english.info1;
                     hauer_info.textContent = multilanguage.english.hauer_info;
+                    localStorage.setItem("language", "english");
                 }else{
                     document.title = "Zwölftonmusik";
                     document.getElementById("title").innerHTML = multilanguage.german.title;
                     document.getElementById("title2").innerHTML = multilanguage.german.title;
                     info1.textContent = multilanguage.german.info1;
                     hauer_info.textContent = multilanguage.german.hauer_info;
+                    localStorage.setItem("language", "german");
                 }
             }
+
         </script>
 
     </body>

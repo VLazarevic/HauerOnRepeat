@@ -28,8 +28,8 @@
             <h1 id="title" class="col-md-10 text-dark">Zwölftonmusik</h1>
 
             <select class="col-md-2" name="language" id="language" onchange="reloadSite()">
-                <option value="german">Deutsch</option>
-                <option value="english">English</option>
+                <option value="german" id="german">Deutsch</option>
+                <option value="english" id="english">English</option>
             </select>
             </div>
         </nav>
@@ -78,6 +78,20 @@
 
         <script>
 
+            $(document).ready(function() {
+                let tmp = localStorage.getItem("language");
+                let drop = document.getElementById("language");
+
+                if(tmp == "german") {
+                    document.querySelector('#german').selected = true;
+                } else {
+                    document.querySelector('#english').selected = true;
+                }
+
+                reloadSite();
+                
+            });
+
             $('#buttonPrev').click(function() {
             window.location='page_one.html';
             });
@@ -98,9 +112,11 @@
                 if(tmp.value === "english"){
                     document.title = "Twelve-tone music";
                     document.getElementById("title").innerHTML = multilanguage.english.title;
+                    localStorage.setItem("language", "english");
                 }else{
                     document.title = "Zwölftonmusik";
                     document.getElementById("title").innerHTML = multilanguage.german.title;
+                    localStorage.setItem("language", "german");
                 }
             }
 
