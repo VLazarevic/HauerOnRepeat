@@ -110,10 +110,14 @@
 
             var multilanguage = {
                 german: {
-                    title: "Zwölftonmusik"
+                    title: "Zwölftonmusik",
+                    info_title: "Wie wurde dieses Musikstück erzeugt?",
+                    info: "Zwölftonmusik ist ein Konzept von Josef Matthias Hauer, bei dem aus Zufallszahlen Musik entsteht. Um ein Zwölftonstuck zu erstellen wird ein Algorithmus durchlaufen, der zwolf Zahlen als Eingabe erhält und das sich daraus ergebende Musikstück erzeugt."
                 },
                 english: {
-                    title: "Twelve-tone music"
+                    title: "Twelve-tone music",
+                    info_title: "How was this piece of music created?",
+                    info: "Twelve-tone music is a concept by Josef Matthias Hauer in which music is created from random numbers. To create a twelve-tone piece, an algorithm is run through which receives twelve numbers as input and generates the resulting piece of music."
                 }
             };
 
@@ -124,10 +128,14 @@
                 if(tmp.value === "english"){
                     document.title = "Twelve-tone music";
                     document.getElementById("title").innerHTML = multilanguage.english.title;
+                    document.getElementById("info_title").innerHTML = multilanguage.english.info_title;
+                    document.getElementById("info_content").innerHTML = multilanguage.english.info;
                     localStorage.setItem("language", "english");
                 }else{
                     document.title = "Zwölftonmusik";
                     document.getElementById("title").innerHTML = multilanguage.german.title;
+                    document.getElementById("info_title").innerHTML = multilanguage.german.info_title;
+                    document.getElementById("info_content").innerHTML = multilanguage.german.info;
                     localStorage.setItem("language", "german");
                 }
             }
