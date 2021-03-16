@@ -76,22 +76,8 @@
     </body>
 
     <script>
-
-
-        function resize(){    
-            $("#canvasTorus").outerHeight($(window)
-                .height()-$("#canvasTorus")
-                    .offset().top- Math.abs($("#canvasTorus")
-                        .outerHeight(true) - $("#canvasTorus").outerHeight()));
-        }
-
-        $(window).on("resize", function(){                      
-                resize();
-            });
         
         $(document).ready(function(){
-            resize();
-            
 
             let canvas = $("#canvasTorus")[0];
             canvas.width = $("#canvasParent").width();
