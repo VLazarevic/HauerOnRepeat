@@ -70,7 +70,7 @@
 
         <!-- Navigation -->
         <section class="row" id="navBar">
-            <button class="btn btn-dark" id="buttonHelp">?</button>
+            <button class="btn btn-dark" id="buttonHelp" onclick="showHelp()">?</button>
             <button class="btn btn-dark" id="buttonNext">></button>
         </section>
 
@@ -126,6 +126,15 @@
                     hauer_info.textContent = multilanguage.german.hauer_info;
                     localStorage.setItem("language", "german");
                 }
+            }
+
+            function showHelp() {
+                let msg;
+                msg = "Zum Ändern der Sprache rechts oben klicken.\r\n\r\n" +
+                    "Die Seite kann mittels den Pfeiltasten rechts unten geändert werden.\r\n\r\n" +
+                    "Für weitere Informationen zur aktuellen Seite nach unten scrollen.\r\n\r\n" +
+                    "Die Videoplayer (Seite 2-4) können über die darunterliegende Bedienleiste gesteuert werden.";
+                alert(msg);
             }
 
         </script>
