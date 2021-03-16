@@ -9,7 +9,7 @@ div, h1, select, option {
     margin-right: 1em;
 }
 
-header select, #containerTorus button, #navBar button {
+nav select, #containerTorus button, #navBar button {
     border-radius: 10px;
     border: 2px solid black;
 }
@@ -32,21 +32,16 @@ header select, #containerTorus button, #navBar button {
 
 #navBar button {
     width: 3em;
+    position:fixed;
+    bottom:1em;
 }
 
-#containerHelp {
-    padding: 0;
-    text-align: left;
+#buttonNext {
+    right: 2em;
 }
 
-#containerPrevNext {
-    padding: 0;
-    text-align: right;
-}
-
-#containerPrev, #containerNext {
-    width: 40%;
-    display: inline-block;
+#buttonPrev {
+    right: 6em;
 }
 
 #index-Text {

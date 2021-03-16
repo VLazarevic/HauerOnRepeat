@@ -2,6 +2,9 @@ div, h1, select, option {
     font-family: 'Source Code Pro', monospace;
 }
 
+.container h1 {
+    padding: 0px;
+}
 
 #language {
     float: right;
@@ -9,13 +12,14 @@ div, h1, select, option {
     margin-right: 1em;
 }
 
-header select, #containerTorus button, #navBar button {
+nav select, #containerTorus button, #navBar button {
     border-radius: 10px;
     border: 2px solid black;
 }
 
 #containerTorus button {
     width: 50%;
+    margin-bottom: 1em;
 }
 
 #containerTorus .row {
@@ -33,21 +37,16 @@ header select, #containerTorus button, #navBar button {
 
 #navBar button {
     width: 3em;
+    position:fixed;
+    bottom:1em;
 }
 
-#containerHelp {
-    padding: 0;
-    text-align: left;
+#buttonNext {
+    right: 2em;
 }
 
-#containerPrevNext {
-    padding: 0;
-    text-align: right;
-}
-
-#containerPrev, #containerNext {
-    width: 40%;
-    display: inline-block;
+#buttonPrev {
+    right: 6em;
 }
 
 #index-Text {
@@ -60,4 +59,16 @@ header select, #containerTorus button, #navBar button {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-  }
+}
+
+#info {
+    margin-bottom: 2em;
+}
+
+#containerInput {
+    margin-top: 8em;
+}
+
+#hauerImageContainer {
+    margin-bottom: 1em;
+}
