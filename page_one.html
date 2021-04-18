@@ -1,198 +1,266 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Zwölftonmusik</title>
 
-        <link rel="stylesheet" href="css/main.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zwölftonmusik</title>
 
-        <!-- font -->
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
 
-        <!-- bootstrap -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    </head>
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400&display=swap" rel="stylesheet">
 
-    <body>
-        
-        <!-- Title and Language -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top">
-            <div class="container">
-                <h1 id="title" class="col-md-10">Zwölftonmusik</h1>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
 
-                <select class="col-md-2" name="language" id="language" onchange="reloadSite()">
-                    <option value="german" id="german" data-reload  >Deutsch</option>
-                    <option value="english" id="english" data-reload >English</option>
-                </select>
+<body>
+
+    <!-- Title and Language -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top">
+        <div class="container">
+            <h1 id="title" class="col-md-10">Zwölftonmusik</h1>
+
+            <select class="col-md-2" name="language" id="language" onchange="reloadSite()">
+                <option value="german" id="german" data-reload>Deutsch</option>
+                <option value="english" id="english" data-reload>English</option>
+            </select>
+        </div>
+    </nav>
+    <br>
+
+    <!-- Input Form -->
+    <form class="container w-50">
+        <div class="form-group" id="containerInput">
+            <input type="number" class="form-control" id="numberInput">
+        </div>
+    </form>
+
+    <!-- Canvas -->
+    <section class="container" id="containerTorus">
+        <div class="row" id="canvasParent">
+            <canvas id="canvasTorus" height="800">
+                OOPS.. Upgrade your Browser
+            </canvas>
+            <ul class="circle">
+                <li>
+                    <div class="text">
+                        <button id="but-1"></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="text">
+                        <button id="but-2"></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="text">
+                        <button id="but-3"></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="text">
+                        <button id="but-4"></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="text">
+                        <button id="but-5"></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="text">
+                        <button id="but-6"></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="text">
+                        <button id="but-7"></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="text">
+                        <button id="but-8"></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="text">
+                        <button id="but-9"></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="text">
+                        <button id="but-10"></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="text">
+                        <button id="but-11"></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="text">
+                        <button id="but-12"></button>
+                    </div>
+                </li>
+            <ul>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <button class="btn btn-light" id="buttonReset">Zurücksetzen</button>
             </div>
-        </nav>
-        <br>
 
-        <!-- Input Form -->
-        <form class="container w-50">
-            <div class="form-group" id="containerInput">
-                <input type="number" class="form-control" id="numberInput">
+            <div class="col-md-6">
+                <button class="btn btn-dark" id="buttonConfirm">Bestätigen</button>
             </div>
-        </form>
+        </div>
+    </section>
 
-        <!-- Canvas -->
-        <section class="container" id="containerTorus">
-            <div class="row" id="canvasParent">
-                <canvas id="canvasTorus" height="800">OOPS.. Upgrade your Browser</canvas>
-            </div>
+    <!-- Info Content -->
+    <section class="container" id="info">
+        <br><br>
+        <h1 id="info_title">Allgemeine Information über Zwölftonmusik</h1>
+        <p id="info_content">Bei der Zwölftonmusik werden alle 12 Töne der Tonleiter verwendet, also im Prinzip alle
+            weißen und schwarzen Tasten, die man auf dem Klavier innerhalb einer Oktave findet. Die einzelnen Töne der
+            Reihe dürfen erst wiederholt werden, wenn alle einmal gespielt wurden. </p>
+    </section>
 
-            <div class="row">
-                <div class="col-md-6">
-                    <button class="btn btn-light" id="buttonReset">Zurücksetzen</button>
-                </div>
+    <!-- Navigation -->
+    <section class="row" id="navBar">
+        <button class="btn btn-dark" id="buttonHelp" onclick="showHelp()">?</button>
+        <button class="btn btn-dark" id="buttonPrev"><</button>
+        <button class="btn btn-dark" id="buttonNext">></button>
+    </section>
 
-                <div class="col-md-6">
-                    <button class="btn btn-dark" id="buttonConfirm">Bestätigen</button>
-                </div>
-            </div>
-        </section>
+</body>
 
-        <!-- Info Content -->
-        <section class="container" id="info">
-            <br><br>
-            <h1 id="info_title">Allgemeine Information über Zwölftonmusik</h1>
-            <p id="info_content">Bei der Zwölftonmusik werden alle 12 Töne der Tonleiter verwendet, also im Prinzip alle weißen und schwarzen Tasten, die man auf dem Klavier innerhalb einer Oktave findet. Die einzelnen Töne der Reihe dürfen erst wiederholt werden, wenn alle einmal gespielt wurden. </p>
-        </section>
+<script>
+    let canvas = $("#canvasTorus")[0];
+    let context = canvas.getContext("2d");
 
-        <!-- Navigation -->
-        <section class="row" id="navBar">
-            <button class="btn btn-dark" id="buttonHelp" onclick="showHelp()">?</button>
-            <button class="btn btn-dark" id="buttonPrev"><</button>
-            <button class="btn btn-dark" id="buttonNext">></button>
-        </section>
+    $(document).ready(function () {
+        drawCanvas();
 
-    </body>
-
-    <script>
-        let canvas = $("#canvasTorus")[0];
-        let context = canvas.getContext("2d");
-        
-        $(document).ready(function(){
-            drawCanvas();
-
-            if(localStorage.getItem("firstLoad") == null) {
-                localStorage.setItem("firstLoad", false);
-                showHelp();
-            }
-
-            let tmp = localStorage.getItem("language");
-            let drop = document.getElementById("language");
-
-            if(tmp == "german") {
-                document.querySelector('#german').selected = true;
-            } else {
-                document.querySelector('#english').selected = true;
-            }
-
-            reloadSite();
-        });
-
-        function drawCanvas(){
-            context.clearRect(0 - canvas.width / 2, 0 - canvas.height / 2, canvas.width, canvas.height);
-            canvas.width = $("#canvasParent").width();
-            canvas.height = canvas.width * 0.7;
-            polygon(context, $("#canvasParent").width() / 2, canvas.height / 2, canvas.width * 0.25, 12);
-            context.lineWidth = 1 / (800 / canvas.height);
-            context.stroke();
+        if (localStorage.getItem("firstLoad") == null) {
+            localStorage.setItem("firstLoad", false);
+            showHelp();
         }
 
-        $(window).on("resize", function(){                      
-            drawCanvas();
-        });
-        
-        $('#buttonPrev').click(function() {
-        window.location='index.html';
-        });
+        let tmp = localStorage.getItem("language");
+        let drop = document.getElementById("language");
 
-        $('#buttonNext').click(function() {
-        window.location='page_two.html';
-        });
-
-        var multilanguage = {
-                german: {
-                    title: "Zwölftonmusik",
-                    info_title: "Allgemeine Information über Zwölftonmusik",
-                    info: "Bei der Zwölftonmusik werden alle 12 Töne der Tonleiter verwendet, also im Prinzip alle weißen und schwarzen Tasten, die man auf dem Klavier innerhalb einer Oktave findet. Die einzelnen Töne der Reihe dürfen erst wiederholt werden, wenn alle einmal gespielt wurden. "
-                },
-                english: {
-                    title: "Twelve-tone music",
-                    info_title: "General information about twelve-tone music",
-                    info: "In twelve-tone music, all 12 tones of the scale are used, i.e. in principle all white and black keys that are found on the piano within an octave. The individual notes in the series may only be repeated once they have all been played once."
-                }
-            };
-
-        function reloadSite(){
-            let tmp = document.getElementById("language");
-
-            if(tmp.value === "english"){
-                document.title = "Twelve-tone music";
-                console.log(document.getElementById("info"));
-                document.getElementById("title").innerHTML = multilanguage.english.title;
-                document.getElementById("info_title").innerHTML = multilanguage.english.info_title;
-                document.getElementById("info_content").innerHTML = multilanguage.english.info;
-                document.getElementById("buttonReset").textContent = "Reset";
-                document.getElementById("buttonConfirm").textContent = "Confirm";
-                localStorage.setItem("language", "english");
-            }else{
-                document.title = "Zwölftonmusik";
-                document.getElementById("title").innerHTML = multilanguage.german.title;
-                document.getElementById("info_title").innerHTML = multilanguage.german.info_title;
-                document.getElementById("info_content").innerHTML = multilanguage.german.info;
-                document.getElementById("buttonReset").textContent = "Zurücksetzen";
-                document.getElementById("buttonConfirm").textContent = "Bestätigen";
-                localStorage.setItem("language", "german");
-            }
+        if (tmp == "german") {
+            document.querySelector('#german').selected = true;
+        } else {
+            document.querySelector('#english').selected = true;
         }
 
-        let points = [];
+        reloadSite();
+    });
 
-        
+    function drawCanvas() {
+        context.clearRect(0 - canvas.width / 2, 0 - canvas.height / 2, canvas.width, canvas.height);
+        canvas.width = $("#canvasParent").width();
+        canvas.height = canvas.width * 0.7;
+        polygon(context, $("#canvasParent").width() / 2, canvas.height / 2, canvas.width * 0.25, 12);
+        context.lineWidth = 1 / (800 / canvas.height);
+        context.stroke();
+    }
 
-        function polygon(ctx, x, y, radius, sides) {
-            if (sides < 3) return;
-            let a = ((Math.PI * 2)/sides);
-            ctx.beginPath();
-            ctx.translate(x,y);
-            ctx.moveTo(radius,0);
-            
-            let temp = [radius, 0];
-            points[0] = temp;
+    $(window).on("resize", function () {
+        drawCanvas();
+    });
 
-            for (let i = 1; i < sides; i++) {
-                ctx.lineTo(radius*Math.cos(a*i),radius*Math.sin(a*i));
-                temp = [radius*Math.cos(a*i), radius*Math.sin(a*i)];
-                points[i] = temp;
-            }
-            ctx.closePath();
-            
-            for(let i = 0; i < points.length; i++) {
-                ctx.moveTo(points[i][0], points[i][1]);
-                for(let j = 0; j < points.length; j++) {
-                    ctx.lineTo(points[j][0], points[j][1]);
-                    ctx.closePath();
-                }
+    $('#buttonPrev').click(function () {
+        window.location = 'index.html';
+    });
+
+    $('#buttonNext').click(function () {
+        window.location = 'page_two.html';
+    });
+
+    var multilanguage = {
+        german: {
+            title: "Zwölftonmusik",
+            info_title: "Allgemeine Information über Zwölftonmusik",
+            info: "Bei der Zwölftonmusik werden alle 12 Töne der Tonleiter verwendet, also im Prinzip alle weißen und schwarzen Tasten, die man auf dem Klavier innerhalb einer Oktave findet. Die einzelnen Töne der Reihe dürfen erst wiederholt werden, wenn alle einmal gespielt wurden. "
+        },
+        english: {
+            title: "Twelve-tone music",
+            info_title: "General information about twelve-tone music",
+            info: "In twelve-tone music, all 12 tones of the scale are used, i.e. in principle all white and black keys that are found on the piano within an octave. The individual notes in the series may only be repeated once they have all been played once."
+        }
+    };
+
+    function reloadSite() {
+        let tmp = document.getElementById("language");
+
+        if (tmp.value === "english") {
+            document.title = "Twelve-tone music";
+            console.log(document.getElementById("info"));
+            document.getElementById("title").innerHTML = multilanguage.english.title;
+            document.getElementById("info_title").innerHTML = multilanguage.english.info_title;
+            document.getElementById("info_content").innerHTML = multilanguage.english.info;
+            document.getElementById("buttonReset").textContent = "Reset";
+            document.getElementById("buttonConfirm").textContent = "Confirm";
+            localStorage.setItem("language", "english");
+        } else {
+            document.title = "Zwölftonmusik";
+            document.getElementById("title").innerHTML = multilanguage.german.title;
+            document.getElementById("info_title").innerHTML = multilanguage.german.info_title;
+            document.getElementById("info_content").innerHTML = multilanguage.german.info;
+            document.getElementById("buttonReset").textContent = "Zurücksetzen";
+            document.getElementById("buttonConfirm").textContent = "Bestätigen";
+            localStorage.setItem("language", "german");
+        }
+    }
+
+    let points = [];
+
+
+
+    function polygon(ctx, x, y, radius, sides) {
+        if (sides < 3) return;
+        let a = ((Math.PI * 2) / sides);
+        ctx.beginPath();
+        ctx.translate(x, y);
+        ctx.moveTo(radius, 0);
+
+        let temp = [radius, 0];
+        points[0] = temp;
+
+        for (let i = 1; i < sides; i++) {
+            ctx.lineTo(radius * Math.cos(a * i), radius * Math.sin(a * i));
+            temp = [radius * Math.cos(a * i), radius * Math.sin(a * i)];
+            points[i] = temp;
+        }
+        ctx.closePath();
+
+        for (let i = 0; i < points.length; i++) {
+            ctx.moveTo(points[i][0], points[i][1]);
+            for (let j = 0; j < points.length; j++) {
+                ctx.lineTo(points[j][0], points[j][1]);
+                ctx.closePath();
             }
         }
+    }
 
-        function showHelp() {
-            let msg;
-            msg = "Zum Ändern der Sprache rechts oben klicken.\r\n\r\n" +
-                  "Die Seite kann mittels den Pfeiltasten rechts unten geändert werden.\r\n\r\n" +
-                  "Für weitere Informationen zur aktuellen Seite nach unten scrollen.\r\n\r\n" +
-                  "Die Videoplayer (Seite 2-4) können über die darunterliegende Bedienleiste gesteuert werden.";
-            alert(msg);
-        }
+    function showHelp() {
+        let msg;
+        msg = "Zum Ändern der Sprache rechts oben klicken.\r\n\r\n" +
+            "Die Seite kann mittels den Pfeiltasten rechts unten geändert werden.\r\n\r\n" +
+            "Für weitere Informationen zur aktuellen Seite nach unten scrollen.\r\n\r\n" +
+            "Die Videoplayer (Seite 2-4) können über die darunterliegende Bedienleiste gesteuert werden.";
+        alert(msg);
+    }
 
-        
 
-    </script>
+
+</script>
+
 </html>
