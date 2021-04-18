@@ -35,8 +35,11 @@
 
     <!-- Input Form -->
     <form class="container w-50">
-        <div class="form-group" id="containerInput">
-            <input type="number" class="form-control" id="numberInput">
+        <div class="input-group" id="containerInput">
+            <input type="number" class="form-control" id="numberInput" max="12" min="1">
+            <!--<span class="input-group-btn"></span>-->
+                <button class="btn btn-dark" id="buttonConfirmInput" onclick="addToNumArr()" type="button">Confirm</button>
+            <!--</span>-->
         </div>
     </form>
 
@@ -49,62 +52,62 @@
             <ul class="circle">
                 <li>
                     <div class="text">
-                        <button id="but-1"></button>
+                        <button id="but-1" onclick="fillnumArr(this.id)"></button>
                     </div>
                 </li>
                 <li>
                     <div class="text">
-                        <button id="but-2"></button>
+                        <button id="but-2" onclick="fillnumArr(this.id)"></button>
                     </div>
                 </li>
                 <li>
                     <div class="text">
-                        <button id="but-3"></button>
+                        <button id="but-3" onclick="fillnumArr(this.id)"></button>
                     </div>
                 </li>
                 <li>
                     <div class="text">
-                        <button id="but-4"></button>
+                        <button id="but-4" onclick="fillnumArr(this.id)"></button>
                     </div>
                 </li>
                 <li>
                     <div class="text">
-                        <button id="but-5"></button>
+                        <button id="but-5" onclick="fillnumArr(this.id)"></button>
                     </div>
                 </li>
                 <li>
                     <div class="text">
-                        <button id="but-6"></button>
+                        <button id="but-6" onclick="fillnumArr(this.id)"></button>
                     </div>
                 </li>
                 <li>
                     <div class="text">
-                        <button id="but-7"></button>
+                        <button id="but-7" onclick="fillnumArr(this.id)"></button>
                     </div>
                 </li>
                 <li>
                     <div class="text">
-                        <button id="but-8"></button>
+                        <button id="but-8" onclick="fillnumArr(this.id)"></button>
                     </div>
                 </li>
                 <li>
                     <div class="text">
-                        <button id="but-9"></button>
+                        <button id="but-9" onclick="fillnumArr(this.id)"></button>
                     </div>
                 </li>
                 <li>
                     <div class="text">
-                        <button id="but-10"></button>
+                        <button id="but-10" onclick="fillnumArr(this.id)"></button>
                     </div>
                 </li>
                 <li>
                     <div class="text">
-                        <button id="but-11"></button>
+                        <button id="but-11" onclick="fillnumArr(this.id)"></button>
                     </div>
                 </li>
                 <li>
                     <div class="text">
-                        <button id="but-12"></button>
+                        <button id="but-12" onclick="fillnumArr(this.id)"></button>
                     </div>
                 </li>
             <ul>
@@ -112,11 +115,11 @@
 
         <div class="row">
             <div class="col-md-6">
-                <button class="btn btn-light" id="buttonReset">Zurücksetzen</button>
+                <button class="btn btn-light" id="buttonReset" onclick="resetNumArr()">Zurücksetzen</button>
             </div>
 
             <div class="col-md-6">
-                <button class="btn btn-dark" id="buttonConfirm">Bestätigen</button>
+                <button class="btn btn-dark" id="buttonConfirm" disabled>Bestätigen</button>
             </div>
         </div>
     </section>
@@ -134,15 +137,65 @@
     <section class="row" id="navBar">
         <button class="btn btn-dark" id="buttonHelp" onclick="showHelp()">?</button>
         <button class="btn btn-dark" id="buttonPrev"><</button>
-        <button class="btn btn-dark" id="buttonNext">></button>
+        <button class="btn btn-dark" id="buttonNext" disabled>></button>
     </section>
 
 </body>
 
 <script>
+
+    var numArr = [];
+
     let canvas = $("#canvasTorus")[0];
     let context = canvas.getContext("2d");
 
+    $("[type='number']").keypress(function (evt) {
+        evt.preventDefault();
+    });
+
+    function addToNumArr(){
+        let inputNum = document.getElementById("numberInput").value;
+        if(inputNum == null){
+            return false;
+        }else{
+            //For testing
+            //console.log(inputNum);
+            numArr.push(inputNum);
+            //For testing
+            //console.log(numArr.length)
+            document.getElementById("but-" + inputNum).disabled = true;
+            if(numArr.length == 12){
+                document.getElementById("buttonConfirm").disabled = false;
+                document.getElementById("buttonNext").disabled = false;
+            }
+        }
+    }
+
+    function fillnumArr(id){
+        document.getElementById(id).disabled = true;
+        //var numb = id.match(/\d/g); other way
+        var numb = parseInt(id.split("-")[1]);
+        numArr.push(numb);
+        /*For testing!!!
+        numArr.forEach(function(item, index, array) {
+            console.log(item, index);
+        });*/
+        if(numArr.length == 12){
+            document.getElementById("buttonConfirm").disabled = false;
+            document.getElementById("buttonNext").disabled = false;
+        }
+    }
+    //Activate by reset button, array get cleaned and buttons get released
+    function resetNumArr(){
+        while(numArr.length > 0) {
+            numArr.pop();
+        }
+        for(let i = 1; i <= 12; i++){
+            document.getElementById("but-" + i).disabled = false;
+        }
+    }
+
+    
     $(document).ready(function () {
         drawCanvas();
 
@@ -208,6 +261,7 @@
             document.getElementById("info_content").innerHTML = multilanguage.english.info;
             document.getElementById("buttonReset").textContent = "Reset";
             document.getElementById("buttonConfirm").textContent = "Confirm";
+            document.getElementById("buttonConfirmInput").textContent = "Confirm";
             localStorage.setItem("language", "english");
         } else {
             document.title = "Zwölftonmusik";
@@ -216,6 +270,7 @@
             document.getElementById("info_content").innerHTML = multilanguage.german.info;
             document.getElementById("buttonReset").textContent = "Zurücksetzen";
             document.getElementById("buttonConfirm").textContent = "Bestätigen";
+            document.getElementById("buttonConfirmInput").textContent = "Bestätigen";
             localStorage.setItem("language", "german");
         }
     }
