@@ -26,6 +26,10 @@ nav select, #buttonReset, #buttonConfirm, #navBar button {
     text-align: center;
 }
 
+#canvasParent {
+  height: 850px;
+}
+
 #containerTorus canvas {
     float: center;
     width: 100%;
@@ -74,80 +78,108 @@ nav select, #buttonReset, #buttonConfirm, #navBar button {
 }
 
 .circle {
-    position: absolute;
+    position: relative;
     padding: 0;
     margin: 1em auto;
-    width: 50%;
-    height: 50%;
+    width: 100%;
+    height: 650px;
     list-style: none;
     overflow: hidden;
-    top: 20%;
-    left: 25%;
+    top: -735px;
+    /* left: 25%; */
     transform: rotate(15deg);
 }
-@media only screen and (max-width: 1199px) {
-    .circle {
-      display: none;
-    }
-  }
+
 .circle button {
     width: 60px;
     height: 60px;
     border-radius: 50%;
     border: 2px solid black;
 }
-  li {
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 50%;
-    height: 50%;
-    transform-origin: 0% 100%;
+
+@media only screen and (max-width: 1199px) {
+  .circle {
+    height: 567px;
+    top: -640px;
   }
-  .text {
-    position: absolute;
-    left: -100%;
-    width: 200%;
-    height: 200%;
-    text-align: center;
-    transform: skewY(60deg) rotate(15deg);
-    padding-top: 20px;
+}
+
+@media only screen and (max-width: 991px) {
+  .circle {
+    height: 448px;
+    top: -493px;
   }
-  li:first-child {
-    transform: rotate(0deg) skewY(-60deg);
+
+  .circle button {
+    width: 45px;
+    height: 45px;
   }
-  li:nth-child(2) {
-    transform: rotate(30deg) skewY(-60deg);
+}
+
+@media only screen and (max-width: 767px) {
+  .circle {
+    height: 360px;
+    top: -408px;
   }
-  li:nth-child(3) {
-    transform: rotate(60deg) skewY(-60deg);
+
+  .circle button {
+    width: 40px;
+    height: 40px;
   }
-  li:nth-child(4) {
-    transform: rotate(90deg) skewY(-60deg);
-  }
-  li:nth-child(5) {
-    transform: rotate(120deg) skewY(-60deg);
-  }
-  li:nth-child(6) {
-    transform: rotate(150deg) skewY(-60deg);
-  }
-  li:nth-child(7) {
-    transform: rotate(180deg) skewY(-60deg);
-  }
-  li:nth-child(8) {
-    transform: rotate(210deg) skewY(-60deg);
-  }
-  li:nth-child(9) {
-    transform: rotate(240deg) skewY(-60deg);
-  }
-  li:nth-child(10) {
-    transform: rotate(270deg) skewY(-60deg);
-  }
-  li:nth-child(11) {
-    transform: rotate(300deg) skewY(-60deg);
-  }
-  li:nth-child(12) {
-    transform: rotate(330deg) skewY(-60deg);
-  }
+}
+
+li {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 50%;
+  transform-origin: 0% 100%;
+}
+.text {
+  position: absolute;
+  left: -100%;
+  width: 200%;
+  height: 200%;
+  text-align: center;
+  transform: skewY(60deg) rotate(15deg);
+  padding-top: 20px;
+}
+li:first-child {
+  transform: rotate(0deg) skewY(-60deg);
+}
+li:nth-child(2) {
+  transform: rotate(30deg) skewY(-60deg);
+}
+li:nth-child(3) {
+  transform: rotate(60deg) skewY(-60deg);
+}
+li:nth-child(4) {
+  transform: rotate(90deg) skewY(-60deg);
+}
+li:nth-child(5) {
+  transform: rotate(120deg) skewY(-60deg);
+}
+li:nth-child(6) {
+  transform: rotate(150deg) skewY(-60deg);
+}
+li:nth-child(7) {
+  transform: rotate(180deg) skewY(-60deg);
+}
+li:nth-child(8) {
+  transform: rotate(210deg) skewY(-60deg);
+}
+li:nth-child(9) {
+  transform: rotate(240deg) skewY(-60deg);
+}
+li:nth-child(10) {
+  transform: rotate(270deg) skewY(-60deg);
+}
+li:nth-child(11) {
+  transform: rotate(300deg) skewY(-60deg);
+}
+li:nth-child(12) {
+  transform: rotate(330deg) skewY(-60deg);
+}
   
