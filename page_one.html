@@ -119,7 +119,7 @@
             </div>
 
             <div class="col-md-6">
-                <button class="btn btn-dark" id="buttonConfirm" disabled>Bestätigen</button>
+                <button class="btn btn-dark" id="buttonConfirm" disabled onclick="outputArr()">Bestätigen</button>
             </div>
         </div>
     </section>
@@ -173,13 +173,11 @@
 
     function fillnumArr(id){
         document.getElementById(id).disabled = true;
+        document.getElementById(id).style.backgroundColor = "#00FF00";
         //var numb = id.match(/\d/g); other way
         var numb = parseInt(id.split("-")[1]);
         numArr.push(numb);
-        /*For testing!!!
-        numArr.forEach(function(item, index, array) {
-            console.log(item, index);
-        });*/
+        
         if(numArr.length == 12){
             document.getElementById("buttonConfirm").disabled = false;
             document.getElementById("buttonNext").disabled = false;
@@ -195,7 +193,10 @@
         }
     }
 
-    
+    function outputArr(){
+        console.log(numArr);
+    }
+
     $(document).ready(function () {
         drawCanvas();
 
