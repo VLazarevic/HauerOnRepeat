@@ -186,6 +186,10 @@
     }
     //Activate by reset button, array get cleaned and buttons get released
     function resetNumArr(){
+        if(numArr.length == 12){
+            document.getElementById("buttonConfirm").disabled = true;
+            document.getElementById("buttonNext").disabled = true;
+        }
         while(numArr.length > 0) {
             numArr.pop();
         }
