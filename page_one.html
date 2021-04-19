@@ -164,6 +164,7 @@
             //For testing
             //console.log(numArr.length)
             document.getElementById("but-" + inputNum).disabled = true;
+            document.getElementById("but-" + inputNum).style.backgroundColor = "#00FF00";
             if(numArr.length == 12){
                 document.getElementById("buttonConfirm").disabled = false;
                 document.getElementById("buttonNext").disabled = false;
@@ -190,6 +191,7 @@
         }
         for(let i = 1; i <= 12; i++){
             document.getElementById("but-" + i).disabled = false;
+            document.getElementById("but-" + i).style.backgroundColor = "#EFEFEF";
         }
     }
 
